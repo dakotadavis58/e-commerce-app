@@ -1,29 +1,32 @@
-import data from "../../data";
+import { Link } from "react-router-dom";
 
-const AllProducts = () => {
+const AllProducts = (props) => {
   return (
-    <div className="products">
-      {data.products.map((product) => (
-        <div className="product" key={product.slug}>
-          <a href={`/product/${product.slug}`}>
-            <img
-              className="product-image"
-              src={product.image}
-              alt={product.name}
-            />
-          </a>
-          <div className="product-info">
-            <a href={`/product/${product.slug}`}>
-              <p>{product.name}</p>
-            </a>
-            <p>
-              <strong>$ {product.price}</strong>
-            </p>
-            <button>Add to cart</button>
+    <>
+      <h1>All products</h1>
+      <div className="products">
+        {props.products.map((product) => (
+          <div className="product" key={product.slug}>
+            <Link to={`/products/${product.slug}`}>
+              <img
+                className="product-image"
+                src={product.image}
+                alt={product.name}
+              />
+            </Link>
+            <div className="product-info">
+              <Link to={`/products/${product.slug}`}>
+                <p>{product.name}</p>
+              </Link>
+              <p>
+                <strong>$ {product.price}</strong>
+              </p>
+              <button>Add to cart</button>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 

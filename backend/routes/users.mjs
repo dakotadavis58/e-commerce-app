@@ -1,7 +1,8 @@
-const router = require("express").Router();
-// mongoose model we created
-let User = require("../models/user.model");
+import express from "express";
+import User from "../models/user.model.mjs";
+const router = express.Router();
 
+// mongoose model we created
 // first route on /users path
 router.route("/").get((req, res) => {
   User.find()
@@ -28,4 +29,4 @@ router.route("/delete").post((req, res) => {
   res.json("Deleted user");
 });
 
-module.exports = router;
+export default router;
