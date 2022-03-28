@@ -5,10 +5,10 @@ import "jquery";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Customers from "./components/Customers";
-import Products from "./components/Products";
-import Cart from "./components/Cart";
-import NavBar from "./components/NavBar";
+import Customers from "./components/customer/Customers";
+import Products from "./components/product/Products";
+import Cart from "./components/cart/Cart";
+import NavBar from "./components/MainNavbar";
 
 ReactDOM.render(
   <BrowserRouter>
