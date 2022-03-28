@@ -8,19 +8,22 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Customers from "./components/customer/Customers";
 import Cart from "./components/cart/Cart";
 import NavBar from "./components/MainNavbar";
-import ProductsRouter from "./components/product/Products";
+import Products from "./components/product/Products";
+import "./index.css";
 
 ReactDOM.render(
   <BrowserRouter>
     <div>
       <NavBar />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="customers/" element={<Customers />} />
-        <Route path="products/" element={<ProductsRouter />} />
-        <Route path="cart/" element={<Cart />} />
-        <Route path="*" element={<div>404: Not found</div>} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="customers/" element={<Customers />} />
+          <Route path="products/" element={<Products />} />
+          <Route path="cart/" element={<Cart />} />
+          <Route path="*" element={<div>404: Not found</div>} />
+        </Routes>
+      </main>
     </div>
   </BrowserRouter>,
   document.getElementById("root")

@@ -2,7 +2,9 @@ import MainContent from "./components/MainContent";
 function App() {
   return (
     <>
-      <MainContent />
+      <main>
+        <MainContent />
+      </main>
     </>
   );
 }
