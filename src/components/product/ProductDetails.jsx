@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
 import { Helmet } from "react-helmet-async";
 import { Badge, Button, Card, Col, ListGroup, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Rating from "./Rating";
 import Loading from "../Loading";
 import MessageBox from "../MessageBox";
@@ -10,6 +10,7 @@ import { getError } from "../../utils";
 import { Store } from "../../Store";
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const reducer = (state, action) => {
     switch (action.type) {
       case "FETCH_REQUEST":
@@ -69,6 +70,7 @@ const ProductDetails = () => {
       type: "CART_ADD_ITEM",
       payload: { ...product, quantity },
     });
+    navigate("/cart");
   };
 
   return loading ? (
