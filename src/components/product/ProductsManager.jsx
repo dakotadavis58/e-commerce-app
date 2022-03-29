@@ -3,10 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import UpdateProduct from "./UpdateProduct";
 import DeleteProduct from "./DeleteProduct";
 import CreateProduct from "./CreateProduct";
-import SingleProduct from "./SingleProduct";
 import axios from "axios";
 import AllProducts from "./AllProducts";
 import logger from "use-reducer-logger";
+import { Row } from "react-bootstrap";
+import ProductDetails from "./ProductDetails";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -55,7 +56,7 @@ const Products = () => {
     } else if (error) {
       return <div>{error}</div>;
     } else {
-      return component;
+      return <Row>{component}</Row>;
     }
   };
   return (
@@ -68,7 +69,7 @@ const Products = () => {
         <Route path="update/:slug" element={<UpdateProduct />} />
         <Route path="delete/:slug" element={<DeleteProduct />} />
         <Route path="new/:slug" element={<CreateProduct />} />
-        <Route path=":slug" element={<SingleProduct />} />
+        <Route path=":slug" element={<ProductDetails />} />
       </Routes>
     </>
   );

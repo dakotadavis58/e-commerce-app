@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 class MainContent extends React.Component {
   // dashboard for admin, tell you how many products, customers, and items in cart we have.
@@ -6,7 +7,14 @@ class MainContent extends React.Component {
   state = {};
 
   render() {
-    return <div>MainContent</div>;
+    return (
+      <div>
+        <Helmet>
+          <title>Amazoon</title>
+        </Helmet>
+        MainContent
+      </div>
+    );
   }
 }
 

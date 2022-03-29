@@ -36,6 +36,18 @@ const data = {
       numReviews: 10,
       description: "high quality shirt",
     },
+    {
+      name: "addidas Slim shirt",
+      slug: "adidas-slim-shirt",
+      category: "shirts",
+      image: "/images/shirt.jpg",
+      price: 120,
+      countInStock: 0,
+      brand: "addidas",
+      rating: 4.5,
+      numReviews: 10,
+      description: "high quality shirt",
+    },
   ],
 };
 

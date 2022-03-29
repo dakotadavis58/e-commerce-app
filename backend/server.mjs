@@ -37,5 +37,14 @@ app.get("/products", (req, res) => {
   res.send(data.products);
 });
 
+app.get("/products/:slug", (req, res) => {
+  const product = data.products.find((x) => x.slug === req.params.slug);
+  if (product) {
+    res.send(product);
+  } else {
+    res.status(404).send({ message: "Product not found" });
+  }
+});
+
 // if successful, lmk
 app.listen(port, () => console.log(`Listening on port ${port}`));
