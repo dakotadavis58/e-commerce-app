@@ -22,7 +22,7 @@ main {
 .products {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .rating span {
@@ -50,4 +50,9 @@ main {
 
 .img-thumbnail {
   height: 80px;
+}
+
+.card-img-top {
+  height: 280px;
+  max-width: 280px;
 }
