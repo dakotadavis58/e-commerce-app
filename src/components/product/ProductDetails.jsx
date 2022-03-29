@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { Helmet } from "react-helmet-async";
 import { Badge, Button, Card, Col, ListGroup, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -7,6 +7,7 @@ import Rating from "./Rating";
 import Loading from "../Loading";
 import MessageBox from "../MessageBox";
 import { getError } from "../../utils";
+import { Store } from "../../Store";
 
 const ProductDetails = () => {
   const reducer = (state, action) => {
@@ -51,6 +52,14 @@ const ProductDetails = () => {
     };
     fetchData();
   }, [slug]);
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const addToCartHandler = () => {
+    ctxDispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...product, quantity: 1 },
+    });
+  };
 
   return loading ? (
     <Loading />
@@ -108,7 +117,9 @@ const ProductDetails = () => {
                   {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <div className="d-grid">
-                        <Button variant="primary">Add to cart</Button>
+                        <Button onClick={addToCartHandler} variant="primary">
+                          Add to cart
+                        </Button>
                       </div>
                     </ListGroup.Item>
                   )}

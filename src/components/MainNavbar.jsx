@@ -1,6 +1,11 @@
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { useContext } from "react";
+import { Navbar, Container, Nav, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Store } from "../Store";
 const MainNavbar = () => {
+  const { state } = useContext(Store);
+  const { cart } = state;
+
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
       <Container>
@@ -13,14 +18,19 @@ const MainNavbar = () => {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="customers">
+            <Nav.Link as={Link} to="/customers">
               Customers
             </Nav.Link>
-            <Nav.Link as={Link} to="products">
+            <Nav.Link as={Link} to="/products">
               Products
             </Nav.Link>
-            <Nav.Link as={Link} to="cart">
+            <Nav.Link as={Link} to="/cart">
               Cart
+              {cart.cartItems.length > 0 && (
+                <Badge pill bg="danger">
+                  {cart.cartItems.length}
+                </Badge>
+              )}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
