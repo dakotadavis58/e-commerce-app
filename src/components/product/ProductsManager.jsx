@@ -69,10 +69,10 @@ const Products = () => {
           path="/"
           element={isLoading(<AllProducts products={products} />)}
         />
+        <Route path="/:id" element={<ProductDetails />} />
         <Route path="update/:slug" element={<UpdateProduct />} />
         <Route path="delete/:slug" element={<DeleteProduct />} />
         <Route path="new/:slug" element={<CreateProduct />} />
-        <Route path=":slug" element={<ProductDetails />} />
       </Routes>
     </>
   );
