@@ -8,6 +8,9 @@ import AllProducts from "./AllProducts";
 import logger from "use-reducer-logger";
 import { Row } from "react-bootstrap";
 import ProductDetails from "./ProductDetails";
+import Loading from "../Loading";
+import MessageBox from "../MessageBox";
+import { getError } from "../../utils";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -42,8 +45,8 @@ const Products = () => {
       try {
         const result = await axios.get("/products");
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
-      } catch {
-        dispatch({ type: "FETCH_FAIL", payload: error.message });
+      } catch (err) {
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
       //   setProducts(result.data);
     };
@@ -52,9 +55,9 @@ const Products = () => {
 
   const isLoading = (component) => {
     if (loading) {
-      return <div>Loading...</div>;
+      return <Loading />;
     } else if (error) {
-      return <div>{error}</div>;
+      return <MessageBox variant="danger">{error}</MessageBox>;
     } else {
       return <Row>{component}</Row>;
     }

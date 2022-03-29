@@ -1,5 +1,4 @@
 import { Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import SingleProduct from "./SingleProduct";
 
 const AllProducts = (props) => {

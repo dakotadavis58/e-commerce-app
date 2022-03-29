@@ -1,5 +1,4 @@
 import { Card, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
 const SingleProduct = (props) => {
