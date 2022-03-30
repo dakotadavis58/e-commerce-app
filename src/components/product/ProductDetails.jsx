@@ -9,8 +9,14 @@ import MessageBox from "../MessageBox";
 import { getError } from "../../utils";
 import { Store } from "../../Store";
 
+/**
+ *
+ * @returns Product details page
+ */
 const ProductDetails = () => {
   const navigate = useNavigate();
+  const params = useParams();
+  const { id } = params;
   const reducer = (state, action) => {
     switch (action.type) {
       case "FETCH_REQUEST":
@@ -31,14 +37,12 @@ const ProductDetails = () => {
     }
   };
 
-  const params = useParams();
-  const { id } = params;
-
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
     loading: true,
     error: "",
   });
+
   //   const [products, setProducts] = useState([]);
   useEffect(() => {
     console.log(params);

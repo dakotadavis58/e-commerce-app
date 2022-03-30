@@ -24,6 +24,9 @@ const MainNavbar = () => {
             <Nav.Link as={Link} to="/products">
               Products
             </Nav.Link>
+            <Nav.Link as={Link} to="/signin">
+              Sign In
+            </Nav.Link>
             <Nav.Link as={Link} to="/cart">
               Cart
               {cart.cartItems.length > 0 && (

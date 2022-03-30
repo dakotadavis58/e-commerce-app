@@ -5,6 +5,7 @@ import NavBar from "./components/MainNavbar.jsx";
 import ProductsManager from "./components/product/ProductsManager.jsx";
 import MainContent from "./components/MainContent.jsx";
 import { Container } from "react-bootstrap";
+import SignInScreen from "./components/screens/SignInScreen.jsx";
 function App() {
   return (
     <>
@@ -20,6 +21,8 @@ function App() {
                 <Route path="customers/" element={<Customers />} />
                 <Route path="products/*" element={<ProductsManager />} />
                 <Route path="cart/" element={<Cart />} />
+                <Route path="signin/" element={<SignInScreen />} />
+
                 <Route path="*" element={<div>404: Not found</div>} />
               </Routes>
             </Container>

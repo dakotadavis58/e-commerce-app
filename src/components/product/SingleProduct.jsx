@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 import { Store } from "../../Store";
 import Rating from "./Rating";
 
+/**
+ *
+ * @param {object} props the product to be proccessed
+ * @returns UI for a product card in AllProducts screen
+ */
 const SingleProduct = (props) => {
   const { product } = props;
 
@@ -13,20 +18,13 @@ const SingleProduct = (props) => {
     cart: { cartItems },
   } = state;
 
-  // const addToCartHandler = async () => {
-  //   const existItem = cart.cartItems.find((x) => x._id === product._id);
-  //   const quantity = existItem ? existItem.quantity + 1 : 1;
-  //   const { data } = await axios.get(`products/${product._id}`);
-  //   if (data.countInStock < quantity) {
-  //     window.alert("Sorry, Product is out of stock");
-  //     return;
-  //   }
-  //   ctxDispatch({
-  //     type: "CART_ADD_ITEM",
-  //     payload: { ...product, quantity },
-  //   });
-  // };
-
+  /**
+   * checks if item exists in cart, checks what its quantity is, gets the product data from backend
+   * if stock is 0, print message, else send a dispatch action with a payload of the item and its quantity
+   *  to the StoreProvider
+   * @param {object} item the item to be updated in the cart
+   * @returns
+   */
   const addToCartHandler = async (item) => {
     const existItem = cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;

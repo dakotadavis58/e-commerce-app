@@ -1,10 +1,11 @@
 import { Spinner } from "react-bootstrap";
+import { PacmanLoader } from "react-spinners";
 
 const Loading = () => {
   return (
-    <Spinner animation="border" role="status">
+    <PacmanLoader animation="border" role="status">
       <span className="visually-hidden">Loading . . .</span>
-    </Spinner>
+    </PacmanLoader>
   );
 };
 
