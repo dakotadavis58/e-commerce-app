@@ -6,11 +6,14 @@ import dotenv from "dotenv";
 import exercisesRouter from "./routes/exercises.mjs";
 import usersRouter from "./routes/users.mjs";
 import data from "./data.mjs";
+import seedRouter from "./routes/seedRoutes.mjs";
+import productRouter from "./routes/productRoutes.mjs";
 
 // uses .env variables
 dotenv.config();
 // creates server
 const app = express();
+app.use("/api/seed", seedRouter);
 // assigns port
 const port = process.env.PORT || 5000;
 // middleware to use cors and parse json
@@ -19,40 +22,20 @@ app.use(express.json());
 // get the uri from .env
 const uri = process.env.ATLAS_URI;
 // connect to db
-mongoose.connect(uri);
-// connection object
-const connection = mongoose.connection;
-// once connection is open, log it
-connection.once("open", () => {
-  console.log("MongoDB database connection established successfully");
-});
+mongoose
+  .connect(uri)
+  .then(() => {
+    console.log("connected to db :D");
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 
 // require the different routers, just files that define routes for specific things
 
 // use the routes
-app.use("/exercises", exercisesRouter);
 app.use("/users", usersRouter);
-
-app.get("/products", (req, res) => {
-  res.send(data.products);
-});
-
-app.get("/products/:id", (req, res) => {
-  const product = data.products.find((x) => x._id === req.params.id);
-  if (product) {
-    res.send(product);
-  } else {
-    res.status(404).send({ message: "Product not found" });
-  }
-});
-app.get("/products/slug/:slug", (req, res) => {
-  const product = data.products.find((x) => x.slug === req.params.slug);
-  if (product) {
-    res.send(product);
-  } else {
-    res.status(404).send({ message: "Product not found" });
-  }
-});
+app.use("/products", productRouter);
 
 // if successful, lmk
 app.listen(port, () => console.log(`Listening on port ${port}`));

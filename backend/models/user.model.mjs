@@ -1,15 +1,13 @@
 import mongoose from "mongoose";
-const Schema = mongoose.Schema;
-const userSchema = new Schema(
+
+const userSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      minlength: 3,
-    },
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    isAdmin: { type: Boolean, default: false, required: true },
   },
+
   {
     timestamps: true,
   }

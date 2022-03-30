@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
 import { Helmet } from "react-helmet-async";
 import { Badge, Button, Card, Col, ListGroup, Row } from "react-bootstrap";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Rating from "./Rating";
 import Loading from "../Loading";
 import MessageBox from "../MessageBox";
@@ -14,7 +14,6 @@ import { Store } from "../../Store";
  * @returns Product details page
  */
 const ProductDetails = () => {
-  const navigate = useNavigate();
   const params = useParams();
   const { id } = params;
   const reducer = (state, action) => {
@@ -43,9 +42,7 @@ const ProductDetails = () => {
     error: "",
   });
 
-  //   const [products, setProducts] = useState([]);
   useEffect(() => {
-    console.log(params);
     const fetchData = async () => {
       dispatch({ type: "FETCH_REQUEST" });
       try {
@@ -54,10 +51,9 @@ const ProductDetails = () => {
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
-      //   setProducts(result.data);
     };
     fetchData();
-  }, [id]);
+  }, [id, params]);
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart } = state;
@@ -65,7 +61,9 @@ const ProductDetails = () => {
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
+    console.log(quantity);
     const { data } = await axios.get(`${product._id}`);
+    console.log(data.countInStock);
     if (data.countInStock < quantity) {
       window.alert("Sorry, Product is out of stock");
       return;
@@ -74,7 +72,6 @@ const ProductDetails = () => {
       type: "CART_ADD_ITEM",
       payload: { ...product, quantity },
     });
-    // navigate("/cart");
   };
 
   return loading ? (
