@@ -13,7 +13,7 @@ const Cart = () => {
     cart: { cartItems },
   } = state;
   const updateCartHandler = async (item, quantity) => {
-    const { data } = await axios.get(`/products`);
+    const { data } = await axios.get(`/products/${item._id}`);
     if (data.countInStock < quantity) {
       window.alert("Sorry, Product is out of stock");
       return;
