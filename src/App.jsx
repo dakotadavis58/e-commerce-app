@@ -10,6 +10,7 @@ import MainContent from "./components/MainContent.jsx";
 import { Container } from "react-bootstrap";
 import SignInScreen from "./components/screens/SignInScreen.jsx";
 import ShippingAddressScreen from "./components/screens/ShippingAddressScreen.jsx";
+import SignUpScreen from "./components/screens/SignUpScreen.jsx";
 function App() {
   return (
     <>
@@ -23,10 +24,11 @@ function App() {
             <Container className="mt-3">
               <Routes>
                 <Route path="/" element={<MainContent />} />
-                <Route path="customers/" element={<Customers />} />
-                <Route path="products/*" element={<ProductsManager />} />
-                <Route path="cart/" element={<Cart />} />
-                <Route path="signin/" element={<SignInScreen />} />
+                <Route path="/customers" element={<Customers />} />
+                <Route path="/products/*" element={<ProductsManager />} />
+                <Route path="/cart/" element={<Cart />} />
+                <Route path="/signin" element={<SignInScreen />} />
+                <Route path="/signup" element={<SignUpScreen />} />
                 <Route path="/shipping" element={<ShippingAddressScreen />} />
                 <Route path="*" element={<div>404: Not found</div>} />
               </Routes>

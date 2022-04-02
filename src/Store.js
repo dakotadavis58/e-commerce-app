@@ -50,6 +50,8 @@ export function StoreProvider(props) {
           userInfo: null,
           cart: { cartItems: [], shippingAddress: {} },
         };
+      case "USER_SIGNUP":
+        return { ...state, userInfo: action.payload };
 
       case "SAVE_SHIPPING_ADDRESS":
         return {
