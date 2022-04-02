@@ -3,6 +3,7 @@ import SingleProduct from "./SingleProduct";
 
 const AllProducts = (props) => {
   const { products } = props;
+
   return (
     <>
       <h1>All products</h1>

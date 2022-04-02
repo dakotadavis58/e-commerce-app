@@ -1,10 +1,16 @@
 import { useContext } from "react";
-import { Navbar, Container, Nav, Badge } from "react-bootstrap";
+import { Navbar, Container, Nav, Badge, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import { Store } from "../Store";
 const MainNavbar = () => {
-  const { state } = useContext(Store);
-  const { cart } = state;
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart, userInfo } = state;
+
+  const signoutHandler = () => {
+    ctxDispatch({ type: "USER_SIGNOUT" });
+    localStorage.removeItem("userInfo");
+  };
 
   return (
     <Navbar bg="dark" expand="lg" variant="dark">
@@ -24,9 +30,31 @@ const MainNavbar = () => {
             <Nav.Link as={Link} to="/products">
               Products
             </Nav.Link>
-            <Nav.Link as={Link} to="/signin">
-              Sign In
-            </Nav.Link>
+            {userInfo ? (
+              <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                <LinkContainer to="/profile">
+                  <NavDropdown.Item>User Profile</NavDropdown.Item>
+                </LinkContainer>
+                <LinkContainer to="/orderhistory">
+                  <NavDropdown.Item>Order History</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Divider />
+                <Nav.Link
+                  style={{ color: "black" }}
+                  className="dropdown-item"
+                  as={Link}
+                  to="#signout"
+                  onClick={signoutHandler}
+                >
+                  Sign Out
+                </Nav.Link>
+              </NavDropdown>
+            ) : (
+              <Nav.Link as={Link} to="/signin">
+                Sign In
+              </Nav.Link>
+            )}
+
             <Nav.Link as={Link} to="/cart">
               Cart
               {cart.cartItems.length > 0 && (

@@ -1,4 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+// need this css for toastify to look good!!! idw to do it manually
+import "react-toastify/dist/ReactToastify.css";
 import Customers from "./components/customer/Customers.jsx";
 import Cart from "./components/cart/Cart.jsx";
 import NavBar from "./components/MainNavbar.jsx";
@@ -11,6 +14,7 @@ function App() {
     <>
       <BrowserRouter>
         <div className="d-flex flex-column site-container">
+          <ToastContainer position="bottom-center" limit={1} />
           <header>
             <NavBar />
           </header>
