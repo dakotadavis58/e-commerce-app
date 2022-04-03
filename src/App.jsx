@@ -11,6 +11,7 @@ import { Container } from "react-bootstrap";
 import SignInScreen from "./components/screens/SignInScreen.jsx";
 import ShippingAddressScreen from "./components/screens/ShippingAddressScreen.jsx";
 import SignUpScreen from "./components/screens/SignUpScreen.jsx";
+import PaymentScreen from "./components/screens/PaymentScreen.jsx";
 function App() {
   return (
     <>
@@ -30,6 +31,7 @@ function App() {
                 <Route path="/signin" element={<SignInScreen />} />
                 <Route path="/signup" element={<SignUpScreen />} />
                 <Route path="/shipping" element={<ShippingAddressScreen />} />
+                <Route path="/payment" element={<PaymentScreen />} />
                 <Route path="*" element={<div>404: Not found</div>} />
               </Routes>
             </Container>

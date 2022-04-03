@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useReducer } from "react";
+import { useContext } from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Store } from "../../Store";
