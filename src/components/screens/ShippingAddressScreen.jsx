@@ -20,6 +20,7 @@ const ShippingAddressScreen = () => {
   const [address, setAddress] = useState(shippingAddress.address || "");
   const [city, setCity] = useState(shippingAddress.city || "");
   const [country, setCountry] = useState(shippingAddress.country || "");
+  const [usState, setUSState] = useState(shippingAddress.usState || "");
   const [postalCode, setPostalCode] = useState(
     shippingAddress.postalCode || ""
   );
@@ -41,11 +42,12 @@ const ShippingAddressScreen = () => {
         city,
         country,
         postalCode,
+        usState,
       },
     });
     localStorage.setItem(
       "shippingAddress",
-      JSON.stringify({ fullName, address, city, country, postalCode })
+      JSON.stringify({ fullName, address, city, country, postalCode, usState })
     );
     navigate("/payment");
   };
@@ -87,6 +89,14 @@ const ShippingAddressScreen = () => {
             <Form.Control
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="usState">
+            <Form.Label>State</Form.Label>
+            <Form.Control
+              value={usState}
+              onChange={(e) => setUSState(e.target.value)}
               required
             />
           </Form.Group>

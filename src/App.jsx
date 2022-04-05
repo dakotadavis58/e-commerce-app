@@ -6,12 +6,13 @@ import Customers from "./components/customer/Customers.jsx";
 import Cart from "./components/cart/Cart.jsx";
 import NavBar from "./components/MainNavbar.jsx";
 import ProductsManager from "./components/product/ProductsManager.jsx";
-import MainContent from "./components/MainContent.jsx";
 import { Container } from "react-bootstrap";
 import SignInScreen from "./components/screens/SignInScreen.jsx";
 import ShippingAddressScreen from "./components/screens/ShippingAddressScreen.jsx";
 import SignUpScreen from "./components/screens/SignUpScreen.jsx";
 import PaymentScreen from "./components/screens/PaymentScreen.jsx";
+import PlaceOrderScreen from "./components/screens/PlaceOrderScreen.jsx";
+import React from "react";
 function App() {
   return (
     <>
@@ -24,7 +25,7 @@ function App() {
           <main>
             <Container className="mt-3">
               <Routes>
-                <Route path="/" element={<MainContent />} />
+                <Route path="/" element={<ProductsManager />} />
                 <Route path="/customers" element={<Customers />} />
                 <Route path="/products/*" element={<ProductsManager />} />
                 <Route path="/cart/" element={<Cart />} />
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/signup" element={<SignUpScreen />} />
                 <Route path="/shipping" element={<ShippingAddressScreen />} />
                 <Route path="/payment" element={<PaymentScreen />} />
+                <Route path="/placeorder" element={<PlaceOrderScreen />} />
                 <Route path="*" element={<div>404: Not found</div>} />
               </Routes>
             </Container>
