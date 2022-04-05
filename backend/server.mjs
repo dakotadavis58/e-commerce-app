@@ -1,11 +1,12 @@
 // imports
-import express from "express";
-import cors from "cors";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
-import userRouter from "./routes/userRoutes.mjs";
-import seedRouter from "./routes/seedRoutes.mjs";
-import productRouter from "./routes/productRoutes.mjs";
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import userRouter from './routes/userRoutes.mjs';
+import seedRouter from './routes/seedRoutes.mjs';
+import productRouter from './routes/productRoutes.mjs';
+import orderRouter from './routes/orderRoutes.mjs';
 
 // uses .env variables
 dotenv.config();
@@ -24,16 +25,17 @@ app.use(express.json());
 mongoose
   .connect(uri)
   .then(() => {
-    console.log("connected to db :D");
+    console.log('connected to db :D');
   })
   .catch((err) => {
     console.log(err.message);
   });
 
 // use the routes
-app.use("/api/seed", seedRouter);
-app.use("/users", userRouter);
-app.use("/products", productRouter);
+app.use('/api/seed', seedRouter);
+app.use('/users', userRouter);
+app.use('/products', productRouter);
+app.use('/orders', orderRouter);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
