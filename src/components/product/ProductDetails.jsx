@@ -1,13 +1,13 @@
-import axios from "axios";
-import { useContext, useEffect, useReducer } from "react";
-import { Helmet } from "react-helmet-async";
-import { Badge, Button, Card, Col, ListGroup, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import Rating from "./Rating";
-import Loading from "../Loading";
-import MessageBox from "../MessageBox";
-import { getError } from "../../utils";
-import { Store } from "../../Store";
+import axios from 'axios';
+import { useContext, useEffect, useReducer } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Badge, Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import Rating from './Rating';
+import Loading from '../Loading';
+import MessageBox from '../MessageBox';
+import { getError } from '../../utils';
+import { Store } from '../../Store';
 
 /**
  *
@@ -18,18 +18,18 @@ const ProductDetails = () => {
   const { id } = params;
   const reducer = (state, action) => {
     switch (action.type) {
-      case "FETCH_REQUEST":
+      case 'FETCH_REQUEST':
         return {
           ...state,
           loading: true,
         };
-      case "FETCH_SUCCESS":
+      case 'FETCH_SUCCESS':
         return {
           ...state,
           product: action.payload,
           loading: false,
         };
-      case "FETCH_FAIL":
+      case 'FETCH_FAIL':
         return { ...state, loading: false, error: action.payload };
       default:
         return state;
@@ -39,17 +39,17 @@ const ProductDetails = () => {
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
     loading: true,
-    error: "",
+    error: '',
   });
 
   useEffect(() => {
     const fetchData = async () => {
-      dispatch({ type: "FETCH_REQUEST" });
+      dispatch({ type: 'FETCH_REQUEST' });
       try {
         const result = await axios.get(`/products/${id}`);
-        dispatch({ type: "FETCH_SUCCESS", payload: result.data });
+        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
       } catch (err) {
-        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
+        dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
       }
     };
     fetchData();
@@ -61,15 +61,13 @@ const ProductDetails = () => {
   const addToCartHandler = async () => {
     const existItem = cart.cartItems.find((x) => x._id === product._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    console.log(quantity);
     const { data } = await axios.get(`${product._id}`);
-    console.log(data.countInStock);
     if (data.countInStock < quantity) {
-      window.alert("Sorry, Product is out of stock");
+      window.alert('Sorry, Product is out of stock');
       return;
     }
     ctxDispatch({
-      type: "CART_ADD_ITEM",
+      type: 'CART_ADD_ITEM',
       payload: { ...product, quantity },
     });
   };
@@ -122,7 +120,7 @@ const ProductDetails = () => {
                         <Badge bg="success">In Stock</Badge>
                       ) : (
                         <Badge bg="danger">Unavailable</Badge>
-                      )}{" "}
+                      )}{' '}
                     </Col>
                   </Row>
                 </ListGroup.Item>

@@ -1,18 +1,19 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 // need this css for toastify to look good!!! idw to do it manually
-import "react-toastify/dist/ReactToastify.css";
-import Customers from "./components/customer/Customers.jsx";
-import Cart from "./components/cart/Cart.jsx";
-import NavBar from "./components/MainNavbar.jsx";
-import ProductsManager from "./components/product/ProductsManager.jsx";
-import { Container } from "react-bootstrap";
-import SignInScreen from "./components/screens/SignInScreen.jsx";
-import ShippingAddressScreen from "./components/screens/ShippingAddressScreen.jsx";
-import SignUpScreen from "./components/screens/SignUpScreen.jsx";
-import PaymentScreen from "./components/screens/PaymentScreen.jsx";
-import PlaceOrderScreen from "./components/screens/PlaceOrderScreen.jsx";
-import React from "react";
+import 'react-toastify/dist/ReactToastify.css';
+import Customers from './components/customer/Customers.jsx';
+import Cart from './components/cart/Cart.jsx';
+import NavBar from './components/MainNavbar.jsx';
+import ProductsManager from './components/product/ProductsManager.jsx';
+import { Container } from 'react-bootstrap';
+import SignInScreen from './components/screens/SignInScreen.jsx';
+import ShippingAddressScreen from './components/screens/ShippingAddressScreen.jsx';
+import SignUpScreen from './components/screens/SignUpScreen.jsx';
+import PaymentScreen from './components/screens/PaymentScreen.jsx';
+import PlaceOrderScreen from './components/screens/PlaceOrderScreen.jsx';
+import React from 'react';
+import OrderScreen from './components/screens/OrderScreen.jsx';
 function App() {
   return (
     <>
@@ -34,6 +35,8 @@ function App() {
                 <Route path="/shipping" element={<ShippingAddressScreen />} />
                 <Route path="/payment" element={<PaymentScreen />} />
                 <Route path="/placeorder" element={<PlaceOrderScreen />} />
+                <Route path="/orders/:id" element={<OrderScreen />} />
+
                 <Route path="*" element={<div>404: Not found</div>} />
               </Routes>
             </Container>
