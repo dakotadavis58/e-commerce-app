@@ -32,6 +32,9 @@ mongoose
   });
 
 // use the routes
+app.get('/keys/paypal', (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
+});
 app.use('/api/seed', seedRouter);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
