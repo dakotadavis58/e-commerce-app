@@ -36,6 +36,7 @@ const OrderScreen = () => {
   const params = useParams();
   const { id: orderId } = params;
   const navigate = useNavigate();
+  // eslint-disable-next-line
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
   const [{ loading, error, order, successPay, loadingPay }, dispatch] =

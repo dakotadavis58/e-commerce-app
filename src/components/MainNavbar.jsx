@@ -1,19 +1,19 @@
-import { useContext } from "react";
-import React from "react";
+import { useContext } from 'react';
+import React from 'react';
 
-import { Navbar, Container, Nav, Badge, NavDropdown } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { Link } from "react-router-dom";
-import { Store } from "../Store";
+import { Navbar, Container, Nav, Badge, NavDropdown } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
+import { Store } from '../Store';
 const MainNavbar = () => {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { cart, userInfo } = state;
 
   const signoutHandler = () => {
-    ctxDispatch({ type: "USER_SIGNOUT" });
-    localStorage.removeItem("userInfo");
-    localStorage.removeItem("shippingAddress");
-    localStorage.removeItem("paymentMethod");
+    ctxDispatch({ type: 'USER_SIGNOUT' });
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
   };
 
   return (
@@ -24,13 +24,13 @@ const MainNavbar = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/customers">
+          <Nav className="me-auto w-100 justify-content-end">
+            {/* <Nav.Link as={Link} to="/customers">
               Customers
-            </Nav.Link>
-            <Nav.Link as={Link} to="/products">
+            </Nav.Link> */}
+            {/* <Nav.Link as={Link} to="/products">
               Products
-            </Nav.Link>
+            </Nav.Link> */}
             {userInfo ? (
               <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
                 <LinkContainer to="/profile">
@@ -41,7 +41,7 @@ const MainNavbar = () => {
                 </LinkContainer>
                 <NavDropdown.Divider />
                 <Nav.Link
-                  style={{ color: "black" }}
+                  style={{ color: 'black' }}
                   className="dropdown-item"
                   as={Link}
                   to="#signout"
