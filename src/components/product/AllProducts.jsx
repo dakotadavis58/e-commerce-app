@@ -1,5 +1,5 @@
-import { Col } from "react-bootstrap";
-import SingleProduct from "./SingleProduct";
+import { Col } from 'react-bootstrap';
+import SingleProduct from './SingleProduct';
 
 const AllProducts = (props) => {
   const { products } = props;

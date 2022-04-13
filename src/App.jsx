@@ -15,6 +15,7 @@ import PlaceOrderScreen from './components/screens/PlaceOrderScreen.jsx';
 import React from 'react';
 import OrderScreen from './components/screens/OrderScreen.jsx';
 import OrderHistoryScreen from './components/screens/OrderHistoryScreen.jsx';
+import ProfileScreen from './components/screens/ProfileScreen.jsx';
 function App() {
   return (
     <>
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/cart/" element={<Cart />} />
                 <Route path="/signin" element={<SignInScreen />} />
                 <Route path="/signup" element={<SignUpScreen />} />
+                <Route path="/profile" element={<ProfileScreen />} />
                 <Route path="/shipping" element={<ShippingAddressScreen />} />
                 <Route path="/payment" element={<PaymentScreen />} />
                 <Route path="/placeorder" element={<PlaceOrderScreen />} />
