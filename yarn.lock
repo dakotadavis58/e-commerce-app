@@ -2474,6 +2474,11 @@
     "require-from-string" "^2.0.2"
     "uri-js" "^4.2.2"
 
+"and@^0.0.3":
+  "integrity" "sha1-svI9bzYN13EJ7q92cFQQnkpMb44="
+  "resolved" "https://registry.npmjs.org/and/-/and-0.0.3.tgz"
+  "version" "0.0.3"
+
 "ansi-align@^3.0.0":
   "integrity" "sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w=="
   "resolved" "https://registry.npmjs.org/ansi-align/-/ansi-align-3.0.1.tgz"
@@ -3085,6 +3090,11 @@
   "integrity" "sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw=="
   "resolved" "https://registry.npmjs.org/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz"
   "version" "2.4.0"
+
+"cd@^0.3.3":
+  "integrity" "sha1-EI7LV7/5O5a5EVxUVzz+8wCO+U0="
+  "resolved" "https://registry.npmjs.org/cd/-/cd-0.3.3.tgz"
+  "version" "0.3.3"
 
 "chalk@^2.0.0":
   "integrity" "sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ=="

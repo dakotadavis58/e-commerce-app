@@ -7,6 +7,7 @@ import userRouter from './routes/userRoutes.mjs';
 import seedRouter from './routes/seedRoutes.mjs';
 import productRouter from './routes/productRoutes.mjs';
 import orderRouter from './routes/orderRoutes.mjs';
+import path from 'path';
 
 // uses .env variables
 dotenv.config();
@@ -39,6 +40,12 @@ app.use('/api/seed', seedRouter);
 app.use('/users', userRouter);
 app.use('/products', productRouter);
 app.use('/orders', orderRouter);
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/build/index.html'))
+);
 
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
